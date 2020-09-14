@@ -1,0 +1,49 @@
+
+/**
+ * This program has the user input destinations in order
+ * to create an itinerary for their travels
+ * @author Jaiden Kazemini
+ * @version 1.0
+ *
+ */
+import java.util.Scanner;
+
+import java.util.ArrayList;
+import java.lang.StringBuilder;
+
+public class Jaiden_Kazemini_Itinerary {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		ArrayList<String> destinations = new ArrayList<String>();
+		StringBuilder sb = new StringBuilder();
+		String yourDestination;
+
+		System.out.println("This program will prompt you for a series of destinations.");
+		System.out.println("Then it will display your travel route based on your entries.\n");
+		System.out.println("Please enter your destinations [Enter done to finish]:\n");
+
+		/**
+		 * The do-while loop below is used to accept destinations until the user types done (not
+		 * case sensitive) and stores the destinations in an ArrayList.
+		 */
+		do {
+			System.out.print("    Destination: ");
+			yourDestination = input.nextLine();
+			destinations.add(yourDestination);
+
+		} while (!yourDestination.equalsIgnoreCase("done"));
+
+		sb.append("\nItinerary: ");
+
+		for (int i = 0; i < destinations.size() - 2; i++) {
+			sb.append(destinations.get(i).toUpperCase() + " to ");
+
+			if (i == destinations.size() - 3)
+				sb.append(destinations.get(i + 1).toUpperCase());
+		}
+
+		System.out.println(sb);
+		input.close();
+	}
+}
